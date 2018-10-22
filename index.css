@@ -51,7 +51,7 @@ nav li {
     margin: 0 5px;
 }
 
-nav li:not(:last-child):after {
+nav > ul > li:not(:last-child):after {
     content: '|';
     height: 100%;
     margin: 10px;
@@ -62,11 +62,13 @@ nav li:not(:last-child):after {
     text-align: center;
 }
 
+.parent > a {
+    margin-right: 5px;
+}
+
 .submenu {
     display: none;
     position: absolute;
-    right: -50%;
-    left: -50%;
     margin-top: 2px;
 }
 
@@ -75,6 +77,10 @@ nav li:not(:last-child):after {
     padding: 5px 10px;
     background-color: rgba(0, 0, 0, 0.7);
 }
+
+.submenu li:hover:before {
+    content:">";
+} 
 
 .submenu a {
     text-align: center;
@@ -134,8 +140,10 @@ button {
 }
 
 #results h2:before {
-    font-family: FontAwesome;
+    font-family: "Font Awesome 5 Free";
     content:"\f091";
+    margin-right: 10px;
+    font-size: 1em;
 }
 
 #results li, h3 {
@@ -148,7 +156,9 @@ button {
 
 #news h2:before {
     content:"\f0a1";
-    font-family: FontAwesome;
+    font-family: "Font Awesome 5 Free";
+    margin-right: 10px;
+    font-size: 1em;
 }
 
 .posts {
@@ -164,7 +174,6 @@ button {
     margin: 20px;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
-    transition: 0.3s;
     border-radius: 2px;
 }
 
