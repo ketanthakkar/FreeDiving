@@ -67,19 +67,26 @@ nav > ul > li:not(:last-child):after {
 }
 
 .submenu {
-    display: none;
+    display: block;
     position: absolute;
     margin-top: 2px;
+    opacity: 0;
 }
 
 .submenu li {
     width: 100%;
-    padding: 5px 10px;
+    padding: 5px 15px 5px 0;
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-.submenu li:hover:before {
+.submenu li:before {
     content:">";
+    margin-right: 10px; 
+    visibility: hidden;
+} 
+
+.submenu li:hover:before {
+    visibility: visible;
 } 
 
 .submenu a {
@@ -88,7 +95,8 @@ nav > ul > li:not(:last-child):after {
 }
 
 .parent:hover > .submenu {
-    display: block;
+    opacity: 1;
+    transition: opacity .5s ease-in-out;
 }
 
 
@@ -154,6 +162,10 @@ button {
     padding: 3em;
 }
 
+#news h2 {
+    padding: 20px 0 50px 0;
+}
+
 #news h2:before {
     content:"\f0a1";
     font-family: "Font Awesome 5 Free";
@@ -163,18 +175,73 @@ button {
 
 .posts {
     padding-top: 20px;
-    display: flex;
+    position: relative;
+
+    /* display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-between; */
+}
+
+.posts::after {
+    position: absolute;
+    content: "";
+    background-color: white;
+    width: 2px;
+    top: 0;
+    bottom: 0;
+    left: 50%;
 }
 
 .posts > article {
-    flex-basis: 40%;
-    margin: 20px;
+    /* flex-basis: 40%; */
+
+    position: relative;
+    width: 50%;
+    padding: 10px 40px;
+    box-sizing: border-box;
+}
+
+.posts > article::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -14px;
     background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
-    border-radius: 2px;
+    top: 18px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.posts > article:nth-child(even)::after {
+    left: -10px;
+}
+
+.posts > article:nth-child(even) {
+    left: 50%;
+}
+
+.posts > article:nth-child(odd)::before {
+    content: " ";
+    position: absolute;
+    top: 22px;
+    z-index: 1; 
+    right: 30px;
+    border: medium solid white;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent white;
+}
+
+.posts > article:nth-child(even)::before {
+    content: " ";
+    position: absolute;
+    top: 22px;
+    z-index: 1;
+    left: 30px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
 }
 
 figure {
@@ -182,12 +249,15 @@ figure {
 }
 
 figure > img {
-    width: 100%;
+    width: 95%;
 }
 
 .art-content {
-    width: 90%;
-    margin: 20px;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+    border-radius: 2px;
 }
 
 .art-content > * {
@@ -196,7 +266,7 @@ figure > img {
 }
 
 .more {
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 5px 10px;
     background-color: #4DB7D9;
     color: white;
